@@ -39,7 +39,7 @@ export interface AdminUIProps {
     loginPage?: LoginComponent | boolean;
     logout?: ComponentType;
     menu?: ComponentType;
-    ready?: ComponentType;
+    ready?: ComponentType | false;
     theme?: object;
     title?: TitleComponent;
 }

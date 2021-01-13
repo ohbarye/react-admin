@@ -30,7 +30,7 @@ export interface AdminRouterProps extends CoreLayoutProps {
     children?: AdminChildren;
     customRoutes?: CustomRoutes;
     loading: LoadingComponent;
-    ready?: ComponentType;
+    ready?: ComponentType | false;
 }
 
 type State = ResourceElement[];
@@ -111,8 +111,9 @@ const CoreAdminRouter: FunctionComponent<AdminRouterProps> = props => {
     } = props;
 
     if (
-        (typeof children !== 'function' && !children) ||
-        (Array.isArray(children) && children.length === 0)
+        ready !== false &&
+        ((typeof children !== 'function' && !children) ||
+            (Array.isArray(children) && children.length === 0))
     ) {
         return createElement(ready);
     }
